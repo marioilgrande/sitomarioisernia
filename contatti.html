@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contatti | Mario Isernia</title>
+  <meta name="description" content="Contatta Mario Isernia per parlare del tuo progetto: prenota una call gratuita oppure scrivimi via WhatsApp, LinkedIn o email. Risposta entro 24 ore." />
+  <link rel="canonical" href="https://marioisernia.com/contatti.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:title" content="Contatti | Mario Isernia" />
+  <meta property="og:description" content="Prenota una call gratuita o scrivimi via WhatsApp, LinkedIn o email." />
+  <meta property="og:image" content="https://marioisernia.com/opengraph.jpg" />
+  <meta property="og:url" content="https://marioisernia.com/contatti.html" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="flex-page">
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand">MARIO ISERNIA</a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="contatti.html" class="nav-link active">Contatti</a>
+        <a href="prenota.html" class="btn-primary-pill">Prenota Call</a>
+      </nav>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Apri menu">
+        <svg id="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg id="icon-close" style="display:none" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-inner">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="prenota.html" class="mobile-link">Prenota Call</a>
+        <a href="contatti.html" class="mobile-link active">Contatti</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="contatti-main">
+    <div class="contatti-container">
+
+      <div class="contatti-header">
+        <h1>Parliamo del Tuo Progetto</h1>
+        <p>Il modo più rapido per partire è prenotare una call gratuita di 30 minuti. Se preferisci scriverti prima, trovi qui sotto tutti i canali per contattarmi.</p>
+        <div style="margin-top:1.5rem;">
+          <a href="prenota.html" class="btn-primary">Prenota una call gratuita</a>
+        </div>
+      </div>
+
+      <div class="contatti-grid">
+
+        <!-- Form -->
+        <div class="form-card">
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group" id="group-nome">
+                <label for="nome">Nome *</label>
+                <input type="text" id="nome" name="nome" class="form-input" placeholder="Il tuo nome" required />
+                <div class="form-error">Il nome deve avere almeno 2 caratteri</div>
+              </div>
+              <div class="form-group" id="group-email">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="La tua email" required />
+                <div class="form-error">Inserisci un'email valida</div>
+              </div>
+            </div>
+
+            <div class="form-group" id="group-telefono">
+              <label for="telefono">Telefono (opzionale)</label>
+              <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="Il tuo numero" />
+            </div>
+
+            <div class="form-group" id="group-messaggio">
+              <label for="messaggio">Messaggio *</label>
+              <textarea id="messaggio" name="messaggio" class="form-textarea" placeholder="Come posso aiutarti?" required></textarea>
+              <div class="form-error">Il messaggio deve avere almeno 10 caratteri</div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9z"/></svg>
+              Invia il Messaggio
+            </button>
+            <p style="margin-top:0.75rem; font-size:0.85rem; opacity:0.65;">Cliccando "Invia" si aprirà la tua app email con il messaggio precompilato. Confermi tu l'invio dal tuo client.</p>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+          <a href="https://wa.me/393473240929" target="_blank" rel="noreferrer" class="contact-method wa">
+            <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div>
+            <div>
+              <h3>WhatsApp</h3>
+              <p class="sub">Scrivimi direttamente</p>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/marioiserniasmm/" target="_blank" rel="noreferrer" class="contact-method li">
+            <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div>
+              <h3>LinkedIn</h3>
+              <p class="sub">Connettiti con me</p>
+            </div>
+          </a>
+
+          <a href="mailto:info@marioisernia.com" class="contact-method ml">
+            <div class="ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div>
+              <h3>Email</h3>
+              <p class="sub">info@marioisernia.com</p>
+            </div>
+          </a>
+
+          <div class="quote-box">
+            <p>"Raccontami il tuo obiettivo o la tua esigenza: valuteremo insieme il modo più diretto per trasformarla in azioni concrete."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="brand" style="display:block; margin-bottom:1rem;">MARIO ISERNIA</a>
+        <p>Aiuto professionisti e piccole imprese a crescere, risparmiare e lavorare meglio.</p>
+        <a href="https://marioisernia.com" class="footer-link">marioisernia.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>Esplora</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="prenota.html">Prenota Call</a></li>
+          <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connettiti</h4>
+        <div class="footer-socials">
+          <a href="https://wa.me/393473240929" target="_blank" rel="noreferrer" class="footer-social wa" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/marioiserniasmm/" target="_blank" rel="noreferrer" class="footer-social li" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:info@marioisernia.com" class="footer-social ml" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year">2025</span> Mario Isernia. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">
+    <h4>Email aperta!</h4>
+    <p>Si è aperta la tua app di posta. Premi invio per inviare il messaggio.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
