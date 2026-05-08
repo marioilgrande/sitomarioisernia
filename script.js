@@ -50,7 +50,7 @@ document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 const yearEl = document.getElementById('current-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Contact form (contatti.html)
+// Contact form (contatti.html) — invio via Netlify Forms
 const form = document.getElementById('contact-form');
 if (form) {
   const showError = (id, msg) => {
@@ -64,6 +64,22 @@ if (form) {
   const clearErrors = () => {
     form.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
   };
+  const showToast = (id) => {
+    const t = document.getElementById(id);
+    if (t) {
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 5000);
+    }
+  };
+  const encodeFormData = (data) => {
+    return Object.keys(data)
+      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+      .join('&');
+  };
+
+  const submitBtn = form.querySelector('.btn-submit');
+  const originalBtnHTML = submitBtn.innerHTML;
+  const sendingHTML = '<svg class="spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Invio in corso...';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -80,32 +96,36 @@ if (form) {
 
     if (!valid) return;
 
-    // Open default mail client (since this is a static site without backend)
-    const submitBtn = form.querySelector('.btn-submit');
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<svg class="spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Apertura email...';
+    submitBtn.innerHTML = sendingHTML;
 
-    const subject = encodeURIComponent('Richiesta dal sito - ' + nome);
-    const body = encodeURIComponent(
-      'Nome: ' + nome + '\n' +
-      'Email: ' + email + '\n' +
-      'Telefono: ' + (form.telefono.value || '-') + '\n\n' +
-      'Messaggio:\n' + messaggio
-    );
+    // Tutti i campi (incluso form-name) inviati a Netlify Forms
+    const data = {
+      'form-name': 'contact',
+      'nome': nome,
+      'email': email,
+      'telefono': form.telefono.value.trim() || '-',
+      'messaggio': messaggio,
+      'bot-field': form['bot-field'] ? form['bot-field'].value : ''
+    };
 
-    setTimeout(() => {
-      window.location.href = 'mailto:info@marioisernia.com?subject=' + subject + '&body=' + body;
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeFormData(data)
+      });
 
-      // Show toast
-      const toast = document.getElementById('toast');
-      if (toast) {
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 5000);
-      }
+      if (!response.ok) throw new Error('Network error: ' + response.status);
 
+      showToast('toast');
       form.reset();
+    } catch (err) {
+      console.error('Form submission error:', err);
+      showToast('toast-error');
+    } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9z"/></svg> Invia il Messaggio';
-    }, 600);
+      submitBtn.innerHTML = originalBtnHTML;
+    }
   });
 }
