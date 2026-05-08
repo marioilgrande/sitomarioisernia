@@ -50,7 +50,7 @@ document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 const yearEl = document.getElementById('current-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Contact form (contatti.html) — invio via Netlify Forms
+// Contact form (contatti.html) — invio via FormSubmit
 const form = document.getElementById('contact-form');
 if (form) {
   const showError = (id, msg) => {
@@ -70,11 +70,6 @@ if (form) {
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 5000);
     }
-  };
-  const encodeFormData = (data) => {
-    return Object.keys(data)
-      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
-      .join('&');
   };
 
   const submitBtn = form.querySelector('.btn-submit');
@@ -99,24 +94,26 @@ if (form) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = sendingHTML;
 
-    // Tutti i campi (incluso form-name) inviati a Netlify Forms
-    const data = {
-      'form-name': 'contact',
-      'nome': nome,
-      'email': email,
-      'telefono': form.telefono.value.trim() || '-',
-      'messaggio': messaggio,
-      'bot-field': form['bot-field'] ? form['bot-field'].value : ''
-    };
-
     try {
-      const response = await fetch('/', {
+      const response = await fetch('https://formsubmit.co/ajax/info@marioisernia.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeFormData(data)
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          nome: nome,
+          email: email,
+          telefono: form.telefono.value.trim() || '-',
+          messaggio: messaggio,
+          _subject: 'Nuovo contatto da ' + nome + ' – marioisernia.com',
+          _template: 'table',
+          _replyto: email
+        })
       });
 
-      if (!response.ok) throw new Error('Network error: ' + response.status);
+      const result = await response.json();
+      if (!result.success) throw new Error('Submission failed');
 
       showToast('toast');
       form.reset();

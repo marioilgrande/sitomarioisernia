@@ -54,11 +54,8 @@
 
         <!-- Form -->
         <div class="form-card">
-          <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-            <input type="hidden" name="form-name" value="contact" />
-            <p style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
-              <label>Non compilare se sei umano: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-            </p>
+          <form id="contact-form" name="contact" method="POST" novalidate>
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
             <div class="form-row">
               <div class="form-group" id="group-nome">
